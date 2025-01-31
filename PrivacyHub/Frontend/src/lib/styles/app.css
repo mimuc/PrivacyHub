@@ -1,0 +1,21 @@
+
+
+.flex-three-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-three-item {
+    flex: 1 1 30%;
+    text-align: center;
+}
+
+.btn-icon-xxxl {
+    aspect-ratio: 1 / 1;
+    width: 90px;
+    height: 90px;
+    font-size: 2rem;
+    line-height: 1.75rem;
+}

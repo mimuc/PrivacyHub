@@ -1,0 +1,95 @@
+{
+  "name": "privacyhub",
+  "version": "1.0.0",
+  "description": "A Matter device that provides privacy and security services to other Matter devices.",
+  "keywords": [
+    "iot",
+    "home automation",
+    "matter",
+    "smart device",
+    "privacy",
+    "security"
+  ],
+  "license": "Apache-2.0",
+  "author": "David Müller",
+  "contributors": [
+    "Martin Turon <mturon@google.com>",
+    "Marco Fucci di Napoli <mfucci@gmail.com>",
+    "Ingo Fischer <github@fischer-ka.de>"
+  ],
+  "bugs": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/project-chip/matter.js.git"
+  },
+  "scripts": {
+    "clean": "matter-build clean",
+    "build": "matter-build",
+    "build-clean": "matter-build --clean",
+    "matter-controller": "matter-run src/matter/ControllerNode.ts",
+    "privacyhub-backend": "matter-run src/express/PrivacyhubBackend.ts",
+    "privacyhub-app": "matter-run src/app.ts",
+    "privacyhub-mqtt": "matter-run src/testing/MqttTest.ts",
+    "privacyhub-noble": "matter-run src/testing/NobleTest.ts",
+    "test-device": "matter-run src/testing/DeviceNode.ts",
+    "test-device-full": "matter-run src/testing/DeviceNodeFull.ts",
+    "noble-test": "matter-run src/NobleTest.ts",
+    "privacyhub-apidoc": "apidoc -i src/ -o doc/",
+    "bundle-device": "esbuild src/examples/DeviceNode.ts --bundle --platform=node --conditions=esbuild --external:@abandonware/bleno --external:@abandonware/bluetooth-hci-socket --sourcemap --minify --outfile=build/bundle/DeviceNode.cjs",
+    "matter-device-bundled": "node --enable-source-maps build/bundle/DeviceNode.cjs"
+  },
+  "bin": {
+    "privacyhub-backend": "./dist/esm/PrivacyhubBackend.js",
+    "matter-light": "./dist/esm/examples/LightDevice.ts",
+    "matter-excelsior1000": "./dist/esm/examples/IlluminatedRollerShade.ts",
+    "matter-sensor": "./dist/esm/examples/SensorDeviceNode.js",
+    "matter-device": "./dist/esm/examples/DeviceNode.js",
+    "matter-bridge": "./dist/esm/examples/BridgedDevicesNode.js",
+    "matter-composeddevice": "./dist/esm/examples/ComposedDeviceNode.js",
+    "matter-multidevice": "./dist/esm/examples/MultiDeviceNode.js",
+    "matter-controller": "./dist/esm/examples/ControllerNode.js",
+    "matter-device-legacy": "./dist/esm/examples/DeviceNodeLegacy.js",
+    "matter-bridge-legacy": "./dist/esm/examples/BridgedDevicesNodeLegacy.js",
+    "matter-composeddevice-legacy": "./dist/esm/examples/ComposedDeviceNodeLegacy.js",
+    "matter-multidevice-legacy": "./dist/esm/examples/MultiDeviceNodeLegacy.js",
+    "matter-controller-legacy": "./dist/esm/examples/ControllerNodeLegacy.js",
+    "matter-legacystorageconverter": "./dist/esm/examples/LegacyStorageConverter.js"
+  },
+  "devDependencies": {
+    "@types/rpi-ws281x-native": "^1.0.3",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@project-chip/matter-node-ble.js": "0.8.2-alpha.0-20240503-22b8f7e5",
+    "@project-chip/matter-node.js": "0.8.2-alpha.0-20240503-22b8f7e5",
+    "@project-chip/matter.js": "0.8.2-alpha.0-20240503-22b8f7e5",
+    "@project-chip/matter.js-tools": "0.8.2-alpha.0-20240503-22b8f7e5",
+    "apidoc": "^1.2.0",
+    "cors": "^2.8.5",
+    "@types/cors": "^2.8.17",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "rpi-ws281x-native": "^1.0.4",
+    "express-jsdoc-swagger": "^1.8.0",
+    "express-oas-validator": "^3.0.1",
+    "socket.io": "^4.7.5",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.1",
+    "mqtt": "^5.6.0",
+    "@abandonware/noble": "^1.9.2-25"
+  },
+  "engines": {
+    "_comment": "For Crypto.hkdf support",
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "dist/**/*",
+    "src/**/*",
+    "LICENSE",
+    "README.md"
+  ],
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  }
+}
